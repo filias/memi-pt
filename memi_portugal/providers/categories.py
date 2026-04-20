@@ -3,7 +3,7 @@
 from memi_engine import CategoryProvider, register
 from memi_engine import images
 
-from memi_portugal.categories.distritos import DISTRICTS
+from memi_portugal.categories.distritos import DISTRICTS, MAP_FILES as DISTRICT_MAPS
 from memi_portugal.categories.monumentos import (
     MONUMENTS,
     LOCATIONS,
@@ -34,10 +34,12 @@ class DistrictsProvider(CategoryProvider):
     override_name = True
 
     def get_image(self, item):
-        result = images.get_wikipedia_image(f"{item} District")
-        if not result or not result.get("image"):
-            result = images.get_wikipedia_image(item)
-        return result
+        map_file = DISTRICT_MAPS.get(item)
+        if map_file:
+            result = images.get_wikipedia_file_image(map_file)
+            if result:
+                return result
+        return images.get_wikipedia_image(item)
 
 
 class MonumentsProvider(CategoryProvider):
