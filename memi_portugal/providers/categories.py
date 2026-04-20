@@ -20,6 +20,12 @@ from memi_portugal.categories.republica import (
     WIKIPEDIA as REPUBLIC_WIKI,
     TAGS as REPUBLIC_TAGS,
 )
+from memi_portugal.categories.natureza import (
+    ALL_ANIMALS,
+    ALL_PLANTS,
+    ANIMAL_WIKIPEDIA,
+    PLANT_WIKIPEDIA,
+)
 
 
 class DistrictsProvider(CategoryProvider):
@@ -84,8 +90,30 @@ class RepublicProvider(CategoryProvider):
         return REPUBLIC_TAGS.get(item)
 
 
+class AnimalsProvider(CategoryProvider):
+    key = "natureza:animais"
+    items = ALL_ANIMALS
+    override_name = True
+
+    def get_image(self, item):
+        wiki = ANIMAL_WIKIPEDIA.get(item, item)
+        return images.get_wikipedia_image(wiki)
+
+
+class PlantsProvider(CategoryProvider):
+    key = "natureza:plantas"
+    items = ALL_PLANTS
+    override_name = True
+
+    def get_image(self, item):
+        wiki = PLANT_WIKIPEDIA.get(item, item)
+        return images.get_wikipedia_image(wiki)
+
+
 register(DistrictsProvider())
 register(MonumentsProvider())
 register(FoodProvider())
 register(MonarchyProvider())
 register(RepublicProvider())
+register(AnimalsProvider())
+register(PlantsProvider())
