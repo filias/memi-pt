@@ -1,7 +1,7 @@
 """Portuguese republic figures (1910 onwards)."""
 
-PRESIDENTES = [
-    # Primeira República (1910–1926)
+PRESIDENTS = [
+    # First Republic (1910–1926)
     "Manuel de Arriaga",
     "Teófilo Braga",
     "Bernardino Machado",
@@ -10,11 +10,11 @@ PRESIDENTES = [
     "António José de Almeida",
     "Manuel Teixeira Gomes",
     "Bernardino Machado (2.º mandato)",
-    # Estado Novo (1926–1974)
+    # Estado Novo dictatorship (1926–1974)
     "Óscar Carmona",
     "Francisco Craveiro Lopes",
     "Américo Tomás",
-    # Terceira República (1974–)
+    # Third Republic (1974–)
     "António de Spínola",
     "Francisco da Costa Gomes",
     "António Ramalho Eanes",
@@ -24,8 +24,8 @@ PRESIDENTES = [
     "Marcelo Rebelo de Sousa",
 ]
 
-FIGURAS = [
-    # Política
+FIGURES = [
+    # Politics
     "António de Oliveira Salazar",
     "Marcelo Caetano",
     "Humberto Delgado",
@@ -37,7 +37,7 @@ FIGURAS = [
     "Otelo Saraiva de Carvalho",
     "Salgueiro Maia",
     "António Guterres",
-    # Literatura
+    # Literature
     "Fernando Pessoa",
     "José Saramago",
     "Sophia de Mello Breyner Andresen",
@@ -52,7 +52,7 @@ FIGURAS = [
     "Herberto Helder",
     "Natália Correia",
     "José Cardoso Pires",
-    # Música
+    # Music
     "Amália Rodrigues",
     "Carlos Paredes",
     "Zeca Afonso",
@@ -60,16 +60,16 @@ FIGURAS = [
     "Dulce Pontes",
     "Madredeus",
     "Carlos do Carmo",
-    # Cinema e artes
+    # Cinema and arts
     "Manoel de Oliveira",
     "Paula Rego",
     "Maria Helena Vieira da Silva",
     "Júlio Pomar",
     "Almada Negreiros",
-    # Ciência
+    # Science
     "Egas Moniz",
     "Abel Salazar",
-    # Desporto
+    # Sports
     "Eusébio",
     "Cristiano Ronaldo",
     "José Mourinho",
@@ -79,11 +79,11 @@ FIGURAS = [
     "Fernando Peyroteo",
 ]
 
-ALL = PRESIDENTES + FIGURAS
+ALL = PRESIDENTS + FIGURES
 
 # Map Portuguese names to English Wikipedia article titles
 WIKIPEDIA = {
-    # Presidentes
+    # Presidents
     "Manuel de Arriaga": "Manuel de Arriaga",
     "Teófilo Braga": "Teófilo Braga",
     "Bernardino Machado": "Bernardino Machado",
@@ -102,7 +102,7 @@ WIKIPEDIA = {
     "Jorge Sampaio": "Jorge Sampaio",
     "Aníbal Cavaco Silva": "Aníbal Cavaco Silva",
     "Marcelo Rebelo de Sousa": "Marcelo Rebelo de Sousa",
-    # Figuras
+    # Figures
     "António de Oliveira Salazar": "António de Oliveira Salazar",
     "Marcelo Caetano": "Marcelo Caetano",
     "Humberto Delgado": "Humberto Delgado",
@@ -152,7 +152,7 @@ WIKIPEDIA = {
 
 # Tags with dates/role
 TAGS = {
-    # Presidentes
+    # Presidents
     "Manuel de Arriaga": "Presidente 1911–1915",
     "Teófilo Braga": "Presidente interino 1910–1911, 1915",
     "Bernardino Machado": "Presidente 1915–1917, 1925–1926",
@@ -171,7 +171,7 @@ TAGS = {
     "Jorge Sampaio": "Presidente 1996–2006",
     "Aníbal Cavaco Silva": "Presidente 2006–2016",
     "Marcelo Rebelo de Sousa": "Presidente 2016–2026",
-    # Figuras
+    # Figures
     "António de Oliveira Salazar": "Ditador, 1889–1970",
     "Marcelo Caetano": "Presidente do Conselho, 1906–1980",
     "Humberto Delgado": "General, candidato presidencial, 1906–1965",

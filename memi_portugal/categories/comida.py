@@ -1,6 +1,6 @@
 """Portuguese traditional food and dishes."""
 
-COMIDA = [
+FOOD = [
     "Pastel de nata",
     "Bacalhau à Brás",
     "Francesinha",

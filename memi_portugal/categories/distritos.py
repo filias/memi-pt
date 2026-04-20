@@ -1,13 +1,13 @@
 """Portuguese districts and their capitals."""
 
-DISTRITOS = [
+DISTRICTS = [
     "Aveiro", "Beja", "Braga", "Bragança", "Castelo Branco",
     "Coimbra", "Évora", "Faro", "Guarda", "Leiria",
     "Lisboa", "Portalegre", "Porto", "Santarém", "Setúbal",
     "Viana do Castelo", "Vila Real", "Viseu",
 ]
 
-CAPITAIS = {
+CAPITALS = {
     "Aveiro": "Aveiro",
     "Beja": "Beja",
     "Braga": "Braga",

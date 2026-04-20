@@ -1,10 +1,10 @@
 """Portuguese monarchy figures (before 1910)."""
 
-# Primeira Dinastia (Borgonha), Segunda Dinastia (Avis),
-# Terceira Dinastia (Filipina), Quarta Dinastia (Bragança)
+# First Dynasty (Burgundy), Second Dynasty (Aviz),
+# Third Dynasty (Philippine), Fourth Dynasty (Braganza)
 
-REIS = [
-    # Dinastia de Borgonha (1139–1383)
+KINGS = [
+    # Burgundy Dynasty (1139–1383)
     "D. Afonso Henriques",
     "D. Sancho I",
     "D. Afonso II",
@@ -14,7 +14,7 @@ REIS = [
     "D. Afonso IV",
     "D. Pedro I",
     "D. Fernando I",
-    # Dinastia de Avis (1385–1580)
+    # Aviz Dynasty (1385–1580)
     "D. João I",
     "D. Duarte I",
     "D. Afonso V",
@@ -23,11 +23,11 @@ REIS = [
     "D. João III",
     "D. Sebastião I",
     "D. Henrique I",
-    # Dinastia Filipina (1581–1640)
+    # Philippine Dynasty (1581–1640)
     "D. Filipe I",
     "D. Filipe II",
     "D. Filipe III",
-    # Dinastia de Bragança (1640–1910)
+    # Braganza Dynasty (1640–1910)
     "D. João IV",
     "D. Afonso VI",
     "D. Pedro II",
@@ -44,7 +44,7 @@ REIS = [
     "D. Manuel II",
 ]
 
-RAINHAS = [
+QUEENS = [
     "D. Mafalda de Saboia",
     "D. Dulce de Aragão",
     "D. Urraca de Castela",
@@ -71,8 +71,8 @@ RAINHAS = [
     "D. Amélia de Orleães",
 ]
 
-FIGURAS = [
-    # Navegadores e exploradores
+FIGURES = [
+    # Navigators and explorers
     "Infante D. Henrique",
     "Vasco da Gama",
     "Pedro Álvares Cabral",
@@ -85,7 +85,7 @@ FIGURAS = [
     "Duarte Pacheco Pereira",
     "Gaspar Corte-Real",
     "Pedro de Sintra",
-    # Escritores e poetas
+    # Writers and poets
     "Luís de Camões",
     "Gil Vicente",
     "Fernão Lopes",
@@ -103,18 +103,18 @@ FIGURAS = [
     "Júlio Dinis",
     "Guerra Junqueiro",
     "Bocage",
-    # Figuras políticas e militares
+    # Political and military figures
     "Marquês de Pombal",
     "Nuno Álvares Pereira",
     "D. Afonso de Albuquerque",
     "Conde de Castelo Melhor",
     "Conde da Ericeira",
-    # Cientistas e outros
+    # Scientists and others
     "Pedro Nunes",
     "Garcia de Orta",
     "Damião de Góis",
     "Duarte Barbosa",
-    # Artistas
+    # Artists
     "Nuno Gonçalves",
     "Grão Vasco",
     "Josefa de Óbidos",
@@ -122,11 +122,11 @@ FIGURAS = [
     "Machado de Castro",
 ]
 
-ALL = REIS + RAINHAS + FIGURAS
+ALL = KINGS + QUEENS + FIGURES
 
 # Map Portuguese names to English Wikipedia article titles
 WIKIPEDIA = {
-    # Reis
+    # Kings
     "D. Afonso Henriques": "Afonso I of Portugal",
     "D. Sancho I": "Sancho I of Portugal",
     "D. Afonso II": "Afonso II of Portugal",
@@ -161,7 +161,7 @@ WIKIPEDIA = {
     "D. Luís I": "Luís I of Portugal",
     "D. Carlos I": "Carlos I of Portugal",
     "D. Manuel II": "Manuel II of Portugal",
-    # Rainhas
+    # Queens
     "D. Mafalda de Saboia": "Mafalda of Savoy, Queen of Portugal",
     "D. Dulce de Aragão": "Dulce of Aragon",
     "D. Urraca de Castela": "Urraca of Castile, Queen of Portugal",
@@ -186,7 +186,7 @@ WIKIPEDIA = {
     "D. Estefânia de Hohenzollern": "Stephanie of Hohenzollern-Sigmaringen",
     "D. Maria Pia de Saboia": "Maria Pia of Savoy",
     "D. Amélia de Orleães": "Amélie of Orléans",
-    # Figuras
+    # Figures
     "Infante D. Henrique": "Henry the Navigator",
     "Vasco da Gama": "Vasco da Gama",
     "Pedro Álvares Cabral": "Pedro Álvares Cabral",
@@ -234,7 +234,7 @@ WIKIPEDIA = {
 
 # Tags with dates/role
 TAGS = {
-    # Reis
+    # Kings
     "D. Afonso Henriques": "Rei 1139–1185",
     "D. Sancho I": "Rei 1185–1211",
     "D. Afonso II": "Rei 1211–1223",
@@ -269,7 +269,7 @@ TAGS = {
     "D. Luís I": "Rei 1861–1889",
     "D. Carlos I": "Rei 1889–1908",
     "D. Manuel II": "Rei 1908–1910",
-    # Rainhas
+    # Queens
     "D. Mafalda de Saboia": "Rainha consorte 1146–1157",
     "D. Dulce de Aragão": "Rainha consorte 1174–1198",
     "D. Urraca de Castela": "Rainha consorte 1208–1220",
@@ -294,7 +294,7 @@ TAGS = {
     "D. Estefânia de Hohenzollern": "Rainha consorte 1858–1859",
     "D. Maria Pia de Saboia": "Rainha consorte 1862–1889",
     "D. Amélia de Orleães": "Rainha consorte 1889–1908",
-    # Figuras
+    # Figures
     "Infante D. Henrique": "Navegador, 1394–1460",
     "Vasco da Gama": "Navegador, c. 1469–1524",
     "Pedro Álvares Cabral": "Navegador, c. 1467–c. 1520",

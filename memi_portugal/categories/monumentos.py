@@ -1,6 +1,6 @@
 """Portuguese monuments and landmarks."""
 
-MONUMENTOS = [
+MONUMENTS = [
     "Torre de Belém",
     "Mosteiro dos Jerónimos",
     "Palácio da Pena",
@@ -95,7 +95,7 @@ WIKIPEDIA = {
     "Praça do Comércio": "Praça do Comércio",
 }
 
-LOCALIZACOES = {
+LOCATIONS = {
     "Torre de Belém": "Lisboa",
     "Mosteiro dos Jerónimos": "Lisboa",
     "Palácio da Pena": "Sintra",

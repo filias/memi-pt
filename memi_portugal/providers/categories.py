@@ -3,28 +3,28 @@
 from memi_engine import CategoryProvider, register
 from memi_engine import images
 
-from memi_portugal.categories.distritos import DISTRITOS
+from memi_portugal.categories.distritos import DISTRICTS
 from memi_portugal.categories.monumentos import (
-    MONUMENTOS,
-    LOCALIZACOES,
+    MONUMENTS,
+    LOCATIONS,
     WIKIPEDIA as MONUMENT_WIKI,
 )
-from memi_portugal.categories.comida import COMIDA
+from memi_portugal.categories.comida import FOOD
 from memi_portugal.categories.monarquia import (
-    ALL as MONARQUIA_ALL,
-    WIKIPEDIA as MONARQUIA_WIKI,
-    TAGS as MONARQUIA_TAGS,
+    ALL as MONARCHY_ALL,
+    WIKIPEDIA as MONARCHY_WIKI,
+    TAGS as MONARCHY_TAGS,
 )
 from memi_portugal.categories.republica import (
-    ALL as REPUBLICA_ALL,
-    WIKIPEDIA as REPUBLICA_WIKI,
-    TAGS as REPUBLICA_TAGS,
+    ALL as REPUBLIC_ALL,
+    WIKIPEDIA as REPUBLIC_WIKI,
+    TAGS as REPUBLIC_TAGS,
 )
 
 
-class DistritosProvider(CategoryProvider):
+class DistrictsProvider(CategoryProvider):
     key = "distritos"
-    items = DISTRITOS
+    items = DISTRICTS
 
     def get_image(self, item):
         result = images.get_wikipedia_image(f"{item} District")
@@ -33,9 +33,9 @@ class DistritosProvider(CategoryProvider):
         return result
 
 
-class MonumentosProvider(CategoryProvider):
+class MonumentsProvider(CategoryProvider):
     key = "monumentos"
-    items = MONUMENTOS
+    items = MONUMENTS
     override_name = True
 
     def get_image(self, item):
@@ -43,12 +43,12 @@ class MonumentosProvider(CategoryProvider):
         return images.get_wikipedia_image(wiki)
 
     def get_tag(self, item):
-        return LOCALIZACOES.get(item)
+        return LOCATIONS.get(item)
 
 
-class ComidaProvider(CategoryProvider):
+class FoodProvider(CategoryProvider):
     key = "comida"
-    items = COMIDA
+    items = FOOD
 
     def get_image(self, item):
         result = images.get_wikipedia_image(item)
@@ -57,34 +57,34 @@ class ComidaProvider(CategoryProvider):
         return result
 
 
-class MonarquiaProvider(CategoryProvider):
+class MonarchyProvider(CategoryProvider):
     key = "pessoas:monarquia"
-    items = MONARQUIA_ALL
+    items = MONARCHY_ALL
     override_name = True
 
     def get_image(self, item):
-        wiki = MONARQUIA_WIKI.get(item, item)
+        wiki = MONARCHY_WIKI.get(item, item)
         return images.get_wikipedia_image(wiki)
 
     def get_tag(self, item):
-        return MONARQUIA_TAGS.get(item)
+        return MONARCHY_TAGS.get(item)
 
 
-class RepublicaProvider(CategoryProvider):
+class RepublicProvider(CategoryProvider):
     key = "pessoas:república"
-    items = REPUBLICA_ALL
+    items = REPUBLIC_ALL
     override_name = True
 
     def get_image(self, item):
-        wiki = REPUBLICA_WIKI.get(item, item)
+        wiki = REPUBLIC_WIKI.get(item, item)
         return images.get_wikipedia_image(wiki)
 
     def get_tag(self, item):
-        return REPUBLICA_TAGS.get(item)
+        return REPUBLIC_TAGS.get(item)
 
 
-register(DistritosProvider())
-register(MonumentosProvider())
-register(ComidaProvider())
-register(MonarquiaProvider())
-register(RepublicaProvider())
+register(DistrictsProvider())
+register(MonumentsProvider())
+register(FoodProvider())
+register(MonarchyProvider())
+register(RepublicProvider())
