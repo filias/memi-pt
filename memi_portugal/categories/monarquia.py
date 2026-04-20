@@ -3,8 +3,8 @@
 # First Dynasty (Burgundy), Second Dynasty (Aviz),
 # Third Dynasty (Philippine), Fourth Dynasty (Braganza)
 
-KINGS = [
-    # Burgundy Dynasty (1139–1383)
+RULERS = [
+    # Kings & Queens regnant — Burgundy Dynasty (1139–1383)
     "D. Afonso Henriques",
     "D. Sancho I",
     "D. Afonso II",
@@ -44,7 +44,8 @@ KINGS = [
     "D. Manuel II",
 ]
 
-QUEENS = [
+CONSORTS = [
+    # Queens consort
     "D. Mafalda de Saboia",
     "D. Dulce de Aragão",
     "D. Urraca de Castela",
@@ -122,7 +123,8 @@ FIGURES = [
     "Machado de Castro",
 ]
 
-ALL = KINGS + QUEENS + FIGURES
+KINGS_QUEENS = RULERS + CONSORTS
+ALL = KINGS_QUEENS + FIGURES
 
 # Map Portuguese names to English Wikipedia article titles
 WIKIPEDIA = {
