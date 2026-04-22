@@ -35,7 +35,9 @@ config = MemiConfig(
     label_back="voltar a jogar",
 )
 
-app = create_app(config)
+import os
+instance_static = os.path.join(os.path.dirname(__file__), "..", "static")
+app = create_app(config, instance_static=instance_static)
 
 if __name__ == "__main__":
     app.run(debug=True, port=8090)

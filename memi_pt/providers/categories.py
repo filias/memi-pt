@@ -4,6 +4,9 @@ from memi_engine import CategoryProvider, register
 from memi_engine import images
 
 from memi_pt.categories.cidades import CITIES, WIKIPEDIA as CITY_WIKI, REGIONS as CITY_REGIONS
+from memi_pt.categories.clubes import CLUBS, LOGOS as CLUB_LOGOS, TAGS as CLUB_TAGS
+from memi_pt.categories.pinturas import PAINTINGS, WIKIPEDIA as PAINTING_WIKI, TAGS as PAINTING_TAGS
+from memi_pt.categories.rios import RIVERS, WIKIPEDIA as RIVER_WIKI, TAGS as RIVER_TAGS
 from memi_pt.categories.distritos import DISTRICTS, MAP_FILES as DISTRICT_MAPS
 from memi_pt.categories.metro import STATIONS, COMMONS_FILES as METRO_FILES, LINES as METRO_LINES
 from memi_pt.categories.monumentos import (
@@ -168,12 +171,60 @@ class PreKingdomProvider(CategoryProvider):
         return PRE_KINGDOM_TAGS.get(item)
 
 
+class RiversProvider(CategoryProvider):
+    key = "geografia:rios"
+    items = RIVERS
+    override_name = True
+
+    def get_image(self, item):
+        wiki = RIVER_WIKI.get(item, item)
+        result = images.get_river_map(wiki)
+        if not result or not result.get("image"):
+            result = images.get_wikipedia_image(wiki)
+        return result
+
+    def get_tag(self, item):
+        return RIVER_TAGS.get(item)
+
+
+class ClubsProvider(CategoryProvider):
+    key = "cultura:clubes"
+    items = CLUBS
+    override_name = True
+    light_bg = True
+
+    def get_image(self, item):
+        logo = CLUB_LOGOS.get(item)
+        if logo:
+            return {"name": item, "image": logo}
+        return images.get_wikipedia_image(item)
+
+    def get_tag(self, item):
+        return CLUB_TAGS.get(item)
+
+
+class PaintingsProvider(CategoryProvider):
+    key = "cultura:pinturas"
+    items = PAINTINGS
+    override_name = True
+
+    def get_image(self, item):
+        wiki = PAINTING_WIKI.get(item, item)
+        return images.get_wikipedia_image(wiki)
+
+    def get_tag(self, item):
+        return PAINTING_TAGS.get(item)
+
+
 register(PreKingdomProvider())
 register(MetroProvider())
 register(DistrictsProvider())
 register(CitiesProvider())
+register(RiversProvider())
 register(MonumentsProvider())
 register(FoodProvider())
+register(ClubsProvider())
+register(PaintingsProvider())
 register(MonarchyProvider())
 register(RepublicProvider())
 register(AnimalsProvider())
