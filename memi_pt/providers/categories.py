@@ -3,33 +3,33 @@
 from memi_engine import CategoryProvider, register
 from memi_engine import images
 
-from memi_pt.categories.cidades import CITIES, WIKIPEDIA as CITY_WIKI, REGIONS as CITY_REGIONS
-from memi_pt.categories.clubes import CLUBS, LOGOS as CLUB_LOGOS, TAGS as CLUB_TAGS
-from memi_pt.categories.pinturas import PAINTINGS, COMMONS_FILES as PAINTING_FILES, TAGS as PAINTING_TAGS
-from memi_pt.categories.rios import RIVERS, WIKIPEDIA as RIVER_WIKI, TAGS as RIVER_TAGS
-from memi_pt.categories.distritos import DISTRICTS, MAP_FILES as DISTRICT_MAPS
-from memi_pt.categories.monumentos import (
+from memi_pt.categories.cities import CITIES, WIKIPEDIA as CITY_WIKI, REGIONS as CITY_REGIONS
+from memi_pt.categories.clubs import CLUBS, LOGOS as CLUB_LOGOS, TAGS as CLUB_TAGS
+from memi_pt.categories.paintings import PAINTINGS, COMMONS_FILES as PAINTING_FILES, TAGS as PAINTING_TAGS
+from memi_pt.categories.rivers import RIVERS, WIKIPEDIA as RIVER_WIKI, TAGS as RIVER_TAGS
+from memi_pt.categories.districts import DISTRICTS, MAP_FILES as DISTRICT_MAPS
+from memi_pt.categories.monuments import (
     MONUMENTS,
     LOCATIONS,
     WIKIPEDIA as MONUMENT_WIKI,
 )
-from memi_pt.categories.comida import FOOD
-from memi_pt.categories.monarquia import (
+from memi_pt.categories.food import FOOD
+from memi_pt.categories.monarchy import (
     ALL as MONARCHY_ALL,
     WIKIPEDIA as MONARCHY_WIKI,
     TAGS as MONARCHY_TAGS,
 )
-from memi_pt.categories.pre_reino import (
+from memi_pt.categories.pre_kingdom import (
     FIGURES as PRE_KINGDOM_ALL,
     WIKIPEDIA as PRE_KINGDOM_WIKI,
     TAGS as PRE_KINGDOM_TAGS,
 )
-from memi_pt.categories.republica import (
+from memi_pt.categories.republic import (
     ALL as REPUBLIC_ALL,
     WIKIPEDIA as REPUBLIC_WIKI,
     TAGS as REPUBLIC_TAGS,
 )
-from memi_pt.categories.natureza import (
+from memi_pt.categories.nature import (
     ALL_ANIMALS,
     ALL_PLANTS,
     ANIMAL_WIKIPEDIA,

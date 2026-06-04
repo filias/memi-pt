@@ -33,7 +33,7 @@ FOOD = [
     "Caldeirada",
     "Arroz de tamboril",
     "Cabrito assado",
-    # Petiscos
+    # Snacks
     "Peixinhos da horta",
     "Rissóis",
     "Croquetes",
@@ -42,7 +42,7 @@ FOOD = [
     "Presunto",
     "Chouriço",
     "Moelas",
-    # Doces and desserts
+    # Sweets and desserts
     "Toucinho do céu",
     "Leite-creme",
     "Arroz doce",

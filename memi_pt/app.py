@@ -1,4 +1,4 @@
-"""Memi Portugal - pratica a tua memória sobre Portugal."""
+"""Memi Portugal - practise your memory of Portugal."""
 
 from memi_engine import MemiConfig, create_app
 

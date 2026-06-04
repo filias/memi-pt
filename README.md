@@ -18,7 +18,7 @@ Live at [pt.memi.click](https://pt.memi.click)
 
 ```bash
 uv sync
-uv run python -m memi_portugal.app
+uv run python -m memi_pt.app
 ```
 
 ## How it works
