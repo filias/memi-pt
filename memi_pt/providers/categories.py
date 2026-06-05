@@ -1,6 +1,6 @@
 """Portuguese category providers."""
 
-from memi_engine import CategoryProvider, register
+from memi_engine import CategoryProvider, ScientificNameProvider, register
 from memi_engine import images
 
 from memi_pt.categories.cities import CITIES, WIKIPEDIA as CITY_WIKI, REGIONS as CITY_REGIONS
@@ -102,30 +102,26 @@ class RepublicProvider(CategoryProvider):
         return REPUBLIC_TAGS.get(item)
 
 
-class AnimalsProvider(CategoryProvider):
+class AnimalsProvider(ScientificNameProvider):
     key = "natureza:animais"
     items = ALL_ANIMALS
     override_name = True
+    scientific_names = SCIENTIFIC_NAMES
 
     def get_image(self, item):
         wiki = ANIMAL_WIKIPEDIA.get(item, item)
         return images.get_wikipedia_image(wiki)
 
-    def get_tag(self, item):
-        return SCIENTIFIC_NAMES.get(item)
 
-
-class PlantsProvider(CategoryProvider):
+class PlantsProvider(ScientificNameProvider):
     key = "natureza:plantas"
     items = ALL_PLANTS
     override_name = True
+    scientific_names = SCIENTIFIC_NAMES
 
     def get_image(self, item):
         wiki = PLANT_WIKIPEDIA.get(item, item)
         return images.get_wikipedia_image(wiki)
-
-    def get_tag(self, item):
-        return SCIENTIFIC_NAMES.get(item)
 
 
 class CitiesProvider(CategoryProvider):
