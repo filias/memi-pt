@@ -6,6 +6,10 @@ from memi_engine import MemiConfig, create_app
 import memi_pt.providers  # noqa: F401
 
 config = MemiConfig(
+    analytics_html=(
+        '<script data-goatcounter="https://memi-pt.goatcounter.com/count"'
+        ' async src="//gc.zgo.at/count.js"></script>'
+    ),
     title="memi portugal",
     subtitle="pratica a tua memória",
     favicon_color="#006600",
