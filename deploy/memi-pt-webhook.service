@@ -1,0 +1,14 @@
+[Unit]
+Description=Memi Portugal deploy webhook
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/opt/memi-pt
+EnvironmentFile=/etc/memi-pt-webhook.env
+ExecStart=/opt/memi-pt/.venv/bin/python deploy/webhook.py
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
