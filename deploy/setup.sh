@@ -46,7 +46,7 @@ cat >> /etc/caddy/Caddyfile <<'EOF'
 
 pt.memi.click {
     handle /deploy {
-        reverse_proxy localhost:9010
+        reverse_proxy localhost:9014
     }
     handle {
         reverse_proxy localhost:8092
@@ -61,7 +61,7 @@ else
     echo ">> 'systemctl reload caddy':"
     echo ""
     echo "       handle /deploy {"
-    echo "           reverse_proxy localhost:9010"
+    echo "           reverse_proxy localhost:9014"
     echo "       }"
 fi
 
