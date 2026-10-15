@@ -4,10 +4,19 @@ from memi_engine import CategoryProvider, ScientificNameProvider, register
 from memi_engine import images
 
 from memi_pt.categories.cities import CITIES, WIKIPEDIA as CITY_WIKI, REGIONS as CITY_REGIONS
-from memi_pt.categories.clubs import CLUBS, LOGOS as CLUB_LOGOS, TAGS as CLUB_TAGS
+from memi_pt.categories.clubs import (
+    CLUBS,
+    LOGOS as CLUB_LOGOS,
+    TAGS as CLUB_TAGS,
+    WIKIPEDIA as CLUB_WIKI,
+)
 from memi_pt.categories.paintings import PAINTINGS, COMMONS_FILES as PAINTING_FILES, TAGS as PAINTING_TAGS
 from memi_pt.categories.rivers import RIVERS, WIKIPEDIA as RIVER_WIKI, TAGS as RIVER_TAGS
-from memi_pt.categories.districts import DISTRICTS, MAP_FILES as DISTRICT_MAPS
+from memi_pt.categories.districts import (
+    DISTRICTS,
+    MAP_FILES as DISTRICT_MAPS,
+    WIKIPEDIA as DISTRICT_WIKI,
+)
 from memi_pt.categories.monuments import (
     MONUMENTS,
     LOCATIONS,
@@ -37,11 +46,17 @@ from memi_pt.categories.nature import (
     SCIENTIFIC_NAMES,
 )
 
+# Mainland Portugal, the Azores and Madeira. Wikidata coordinates outside it
+# belong to something other than the place on the card, so they get no map.
+PORTUGAL_BOUNDS = ((32.0, 42.2), (-31.6, -6.1))
+
 
 class DistrictsProvider(CategoryProvider):
     key = "geografia:distritos"
     items = DISTRICTS
     override_name = True
+    map_zoom = 8
+    map_bounds = PORTUGAL_BOUNDS
 
     def get_image(self, item):
         map_file = DISTRICT_MAPS.get(item)
@@ -51,11 +66,17 @@ class DistrictsProvider(CategoryProvider):
                 return result
         return images.get_wikipedia_image(item)
 
+    def get_wikipedia_title(self, item):
+        # The card is a map file with no article link of its own.
+        return ("en", DISTRICT_WIKI.get(item, item))
+
 
 class MonumentsProvider(CategoryProvider):
     key = "cultura:monumentos"
     items = MONUMENTS
     override_name = True
+    map_zoom = 16
+    map_bounds = PORTUGAL_BOUNDS
 
     def get_image(self, item):
         wiki = MONUMENT_WIKI.get(item, item)
@@ -128,6 +149,8 @@ class CitiesProvider(CategoryProvider):
     key = "geografia:cidades"
     items = CITIES
     override_name = True
+    map_zoom = 12
+    map_bounds = PORTUGAL_BOUNDS
 
     def get_image(self, item):
         wiki = CITY_WIKI.get(item, item)
@@ -165,6 +188,11 @@ class RiversProvider(CategoryProvider):
     def get_tag(self, item):
         return RIVER_TAGS.get(item)
 
+    def get_wikipedia_title(self, item):
+        # The card is often a river map with no article link. No map in the
+        # panel: a river's Wikidata point is a single spot on it (its mouth).
+        return ("en", RIVER_WIKI.get(item, item))
+
 
 class ClubsProvider(CategoryProvider):
     key = "cultura:clubes"
@@ -180,6 +208,10 @@ class ClubsProvider(CategoryProvider):
 
     def get_tag(self, item):
         return CLUB_TAGS.get(item)
+
+    def get_wikipedia_title(self, item):
+        # The card is a local logo with no article link.
+        return ("en", CLUB_WIKI.get(item, item))
 
 
 class PaintingsProvider(CategoryProvider):

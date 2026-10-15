@@ -14,6 +14,9 @@ config = MemiConfig(
     # What the page tells Google and screen readers it is: this game
     # is Portuguese, not the engine's default English.
     html_lang="pt",
+    # Details panel beside the card on reveal: the Wikipedia intro (in
+    # Portuguese where it exists) and, for places, a map.
+    layout="enriched",
     title="memi portugal",
     subtitle="pratica a tua memória",
     favicon_color="#006600",
@@ -91,6 +94,9 @@ config = MemiConfig(
     label_click_for_new="clica novamente para outra",
     label_back="voltar a jogar",
     label_more="saber mais",
+    label_open_map="abrir mapa",
+    label_listen="ouvir",
+    label_all="todos",
     done_html="""
         <svg width="200" height="180" viewBox="0 0 80 72" xmlns="http://www.w3.org/2000/svg">
             <defs>

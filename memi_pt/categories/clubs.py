@@ -64,3 +64,26 @@ TAGS = {
     "Estrela Amadora": "Amadora",
     "Farense": "Faro",
 }
+
+# English Wikipedia article for each club (the details panel switches to the
+# Portuguese one).
+WIKIPEDIA = {
+    "Benfica": "S.L. Benfica",
+    "Porto": "FC Porto",
+    "Sporting CP": "Sporting CP",
+    "Braga": "S.C. Braga",
+    "Vitoria Guimaraes": "Vitória S.C.",
+    "Santa Clara": "C.D. Santa Clara",
+    "Casa Pia": "Casa Pia A.C.",
+    "Moreirense": "Moreirense F.C.",
+    "Famalicao": "F.C. Famalicão",
+    "Gil Vicente": "Gil Vicente F.C.",
+    "Rio Ave": "Rio Ave F.C.",
+    "Estoril": "G.D. Estoril Praia",
+    "Arouca": "F.C. Arouca",
+    "Boavista": "Boavista F.C.",
+    "Nacional": "C.D. Nacional",
+    "AVS": "AVS Futebol SAD",
+    "Estrela Amadora": "C.F. Estrela da Amadora",
+    "Farense": "S.C. Farense",
+}
