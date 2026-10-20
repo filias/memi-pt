@@ -83,6 +83,7 @@ ENGLISH = {
     "label_open_map": "open map",
     "label_listen": "listen",
     "label_all": "all",
+    "label_contents": "what's in this category",
     "category_labels": {
         "cultura": "culture",
         "geografia": "geography",
@@ -228,6 +229,7 @@ config = MemiConfig(
     label_open_map="abrir mapa",
     label_listen="ouvir",
     label_all="todos",
+    label_contents="o que há nesta categoria",
     languages={"en": ENGLISH},
     done_html="""
         <svg width="200" height="180" viewBox="0 0 80 72" xmlns="http://www.w3.org/2000/svg">
