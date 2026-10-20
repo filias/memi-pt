@@ -5,12 +5,33 @@ from memi_engine import MemiConfig, create_app
 # Import providers to register them
 import memi_pt.providers  # noqa: F401
 
+# The home page opens on the menu, and its empty card shows Portugal's outline
+# in its flag above "escolhe uma categoria". The engine has no setting for
+# that, so this rides on analytics_html (raw HTML at the bottom of every page,
+# after app.js); loading a category replaces the card's text, so the map goes
+# with it. static/flag-map-portugal.svg: Wikimedia Commons, "Flag map of
+# Portugal.svg", public domain.
+HOME_CARD_HTML = """
+<style>
+    #status.home { width: 100%; text-align: center; }
+    #status .home-map { display: block; max-width: 80%; max-height: calc(min(500px, 90vw) * 0.6); margin: 0 auto 1.5rem; }
+</style>
+<script>
+(function () {
+    var status = document.getElementById('status');
+    if (status && status.textContent.trim() === 'escolhe uma categoria') {
+        status.classList.add('home');
+        status.insertAdjacentHTML('afterbegin', '<img class="home-map" src="/static/flag-map-portugal.svg" alt="Portugal">');
+    }
+})();
+</script>
+"""
+
 config = MemiConfig(
-    default_category="cultura:monumentos",
     analytics_html=(
         '<script data-goatcounter="https://memi-pt.goatcounter.com/count"'
         ' async src="//gc.zgo.at/count.js"></script>'
-    ),
+    ) + HOME_CARD_HTML,
     # What the page tells Google and screen readers it is: this game
     # is Portuguese, not the engine's default English.
     html_lang="pt",
@@ -78,6 +99,14 @@ config = MemiConfig(
         <p>Sessões curtas e frequentes funcionam melhor do que sessões
         longas &mdash; o <em>efeito de espaçamento</em>. Alguns minutos
         por dia chegam.</p>
+
+        <h2>Créditos</h2>
+        <p>Imagens e descrições da Wikipédia e da Wikimedia Commons, com as
+        suas licenças Creative Commons. As gravações da categoria língua são de
+        falantes nativos de português europeu para o
+        <a href="https://lingualibre.org">Lingua Libre</a> (CC BY-SA 4.0; ver
+        <a href="https://github.com/filias/memi-pt/blob/main/static/audio/CREDITS.md">CREDITS.md</a>).
+        Mapas &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>.</p>
     """,
     # Portuguese labels
     label_theme="tema",

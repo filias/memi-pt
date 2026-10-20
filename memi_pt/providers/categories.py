@@ -1,5 +1,9 @@
 """Portuguese category providers."""
 
+import base64
+from pathlib import Path
+from urllib.parse import quote
+
 from memi_engine import CategoryProvider, ScientificNameProvider, register
 from memi_engine import images
 
@@ -23,6 +27,7 @@ from memi_pt.categories.monuments import (
     WIKIPEDIA as MONUMENT_WIKI,
 )
 from memi_pt.categories.food import FOOD
+from memi_pt.categories.language import ENGLISH, PHRASE_NOTES, PHRASES, phrase_slug
 from memi_pt.categories.monarchy import (
     ALL as MONARCHY_ALL,
     WIKIPEDIA as MONARCHY_WIKI,
@@ -229,6 +234,78 @@ class PaintingsProvider(CategoryProvider):
         return PAINTING_TAGS.get(item)
 
 
+
+AUDIO_DIR = Path(__file__).resolve().parent.parent.parent / "static" / "audio"
+
+
+def _text_card(text):
+    """Render a short phrase as an SVG data-URI to use as the card image."""
+    size = min(60, max(28, 780 // max(len(text), 1)))
+    safe = text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    svg = (
+        '<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" '
+        'viewBox="0 0 640 420">'
+        '<rect width="640" height="420" fill="#f7f5f0"/>'
+        f'<text x="320" y="140" text-anchor="middle" dominant-baseline="middle" '
+        f"font-family=\"Georgia, 'Times New Roman', serif\" font-size=\"{size}\" "
+        f'fill="#223344">{safe}</text>'
+        "</svg>"
+    )
+    b64 = base64.b64encode(svg.encode("utf-8")).decode("ascii")
+    return "data:image/svg+xml;base64," + b64
+
+
+class EnglishToPortuguese(CategoryProvider):
+    """For visitors: read the English, say the Portuguese."""
+
+    key = "língua:inglês → português"
+    light_bg = True
+    items = list(PHRASES)
+
+    def portuguese(self, item):
+        return PHRASES[item]
+
+    def get_image(self, item):
+        portuguese = self.portuguese(item)
+        return {
+            "name": portuguese,
+            "image": _text_card(item),
+            "url": f"https://en.wiktionary.org/wiki/{quote(portuguese)}",
+        }
+
+    def get_details(self, item):
+        say, note = PHRASE_NOTES[self.portuguese(item)]
+        return {"text": f"Say: {say}\n\n{note}"}
+
+    def get_audio(self, item):
+        """The Portuguese, spoken: a native speaker's recording from
+        static/audio/<slug>.mp3 when there is one, else the browser's voice."""
+        portuguese = self.portuguese(item)
+        audio = {"text": portuguese, "lang": "pt-PT"}
+        recording = AUDIO_DIR / f"{phrase_slug(portuguese)}.mp3"
+        if recording.exists():
+            audio["src"] = f"/static/audio/{recording.name}"
+        return audio
+
+
+class PortugueseToEnglish(EnglishToPortuguese):
+    """The other way round: read the Portuguese, name the English."""
+
+    key = "língua:português → inglês"
+    items = list(ENGLISH)
+    submenu_default = True
+
+    def portuguese(self, item):
+        return item
+
+    def get_image(self, item):
+        return {**super().get_image(item), "name": ENGLISH[item]}
+
+    def get_audio(self, item):
+        # Hearing the Portuguese is part of the question here: listen, then answer.
+        return {**super().get_audio(item), "before_reveal": True}
+
+
 register(PreKingdomProvider())
 register(DistrictsProvider())
 register(CitiesProvider())
@@ -241,3 +318,5 @@ register(MonarchyProvider())
 register(RepublicProvider())
 register(AnimalsProvider())
 register(PlantsProvider())
+register(PortugueseToEnglish())
+register(EnglishToPortuguese())

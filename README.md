@@ -13,6 +13,11 @@ Live at [pt.memi.click](https://pt.memi.click)
 - **Pessoas: República** — 64 figures from the republic (presidents, artists, athletes)
 - **Natureza: Animais** — 49 native Portuguese animals
 - **Natureza: Plantas** — 29 native Portuguese plants and trees
+- **Língua** — 28 everyday European Portuguese phrases for visitors, in two
+  directions: *português → inglês* (listen, then name the English) and
+  *inglês → português*. A speaker button plays a native speaker's recording
+  from Lingua Libre (17 phrases; fetch them with
+  `uv run python scripts/fetch_audio.py`), else the browser's voice.
 
 ## Setup
 
