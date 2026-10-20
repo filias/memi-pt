@@ -100,7 +100,8 @@ ENGLISH = {
         "animais": "animals",
         "plantas": "plants",
         "antes de 1143": "before 1143",
-        "1910-presente": "1910–present",
+        "monarquia 1143-1910": "monarchy 1143-1910",
+        "república 1910-presente": "republic 1910-present",
         "português → inglês": "portuguese → english",
         "inglês → português": "english → portuguese",
     },
@@ -249,8 +250,24 @@ config = MemiConfig(
 )
 
 import os
+from flask import redirect
+
 instance_static = os.path.join(os.path.dirname(__file__), "..", "static")
 app = create_app(config, instance_static=instance_static)
+
+# The people eras were renamed so the menu (sorted A-Z) reads in date order;
+# their old addresses were already out there, so they still lead to them.
+_OLD_SLUGS = {
+    "1143-1910": "monarquia-1143-1910",
+    "1910-presente": "republica-1910-presente",
+}
+for _old, _new in _OLD_SLUGS.items():
+    for _prefix in ("", "/en"):
+        app.add_url_rule(
+            f"{_prefix}/{_old}",
+            f"old_slug{_prefix.replace('/', '_')}_{_old}",
+            lambda to=f"{_prefix}/{_new}": redirect(to, code=301),
+        )
 
 if __name__ == "__main__":
     app.run(debug=True, port=8090)

@@ -130,7 +130,7 @@ class FoodProvider(CategoryProvider):
 
 
 class MonarchyProvider(CategoryProvider):
-    key = "pessoas:1143-1910"
+    key = "pessoas:monarquia 1143-1910"
     translations = {"en": MONARCHY_EN}
     items = MONARCHY_ALL
     override_name = True
@@ -144,7 +144,7 @@ class MonarchyProvider(CategoryProvider):
 
 
 class RepublicProvider(CategoryProvider):
-    key = "pessoas:1910-presente"
+    key = "pessoas:república 1910-presente"
     translations = {"en": REPUBLIC_EN}
     items = REPUBLIC_ALL
     override_name = True
