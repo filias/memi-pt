@@ -195,3 +195,17 @@ REGIONS = {
     "Palmela": "Estremadura",
     "Angra do Heroísmo": "Açores",
 }
+
+# English, for the game played at /en/: answers and region tags that English
+# names differently. Historical province names stay as they are.
+EN = {
+    "Lisboa": "Lisbon",
+    "Açores": "Azores",
+    "Douro Litoral": "Douro Coast",
+    "Alentejo Litoral": "Alentejo Coast",
+    "Alto Alentejo": "Upper Alentejo",
+    "Baixo Alentejo": "Lower Alentejo",
+    "Beira Alta": "Upper Beira",
+    "Beira Baixa": "Lower Beira",
+    "Beira Litoral": "Beira Coast",
+}

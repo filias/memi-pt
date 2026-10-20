@@ -5,8 +5,109 @@ from memi_engine import MemiConfig, create_app
 # Import providers to register them
 import memi_pt.providers  # noqa: F401
 
+# The game in English, at /en/ (memi-engine's MemiConfig.languages): every
+# field below that's in Portuguese, and what the menu calls each category.
+# The cards' answers and tags are translated by each provider.
+ENGLISH = {
+    "subtitle": "practise your memory",
+    "sponsor_text": "sponsor",
+    "label_related_sites": "more memi games",
+    "about_html": """
+        <p>Memi Portugal is a memory game about Portugal. Districts,
+        monuments, food, famous people &mdash; there's always something new
+        to learn.</p>
+
+        <h2>How to play</h2>
+        <p>Pick a category, look at the picture and try to name it before
+        revealing the answer. No accounts, no scores, no time limits.</p>
+        <p>The bottom bar has a few helpers:</p>
+        <ul>
+            <li><strong>clues:</strong> turns on progressive letter clues
+            &mdash; show the first letter, then the next, and so on. Handy
+            when the name is on the tip of your tongue.</li>
+            <li><strong>know more:</strong> appears on reveal and opens the
+            item's Wikipedia article (or its source page), so you can read
+            more.</li>
+            <li><strong>report:</strong> flags a card whose picture doesn't
+            match the answer (wrong image, broken thumbnail, etc.).</li>
+        </ul>
+        <p>You can play in two ways:</p>
+        <ul>
+            <li><strong>To learn:</strong> when you don't recognise
+            something, reveal the answer and follow <em>know more</em> to
+            read about it. Each exposure strengthens the link between the
+            picture and the name.</li>
+            <li><strong>To test yourself:</strong> once a category feels
+            familiar, go through it and see how many you can name without
+            revealing.</li>
+        </ul>
+
+        <h2>Why it works</h2>
+        <p>It's a simple form of <em>active recall</em> &mdash; pulling
+        information out of memory instead of re-reading it. The
+        <em>testing effect</em>, well documented in cognitive psychology,
+        shows that retrieval practice builds more durable memories than
+        re-exposure alone.</p>
+        <p>Because each prompt is a picture, the game also leans on the
+        <em>picture superiority effect</em>: pictures are encoded more
+        richly than words and are easier to recall later. Naming the item
+        is a form of <em>cued recall</em>, between simple recognition
+        (&ldquo;have I seen this before?&rdquo;) and unaided <em>free
+        recall</em>.</p>
+        <p>Short, frequent sessions work better than long ones &mdash; the
+        <em>spacing effect</em>. A few minutes a day is enough.</p>
+
+        <h2>Credits</h2>
+        <p>Images and descriptions from Wikipedia and Wikimedia Commons, under
+        their Creative Commons licences. The language recordings are by
+        native speakers of European Portuguese for
+        <a href="https://lingualibre.org">Lingua Libre</a> (CC BY-SA 4.0; see
+        <a href="https://github.com/filias/memi-pt/blob/main/static/audio/CREDITS.md">CREDITS.md</a>).
+        Maps &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>
+        contributors.</p>
+    """,
+    "label_theme": "theme",
+    "label_about": "about",
+    "label_report": "report",
+    "label_reported": "reported",
+    "label_clues_on": "clues: on",
+    "label_clues_off": "clues: off",
+    "label_show_letter": "show letter",
+    "label_pick_category": "pick a category",
+    "label_loading": "loading...",
+    "label_all_done": "all done! click to start over",
+    "label_click_to_reveal": "click the image to reveal the answer",
+    "label_click_for_new": "click again for a new one",
+    "label_back": "back to playing",
+    "label_more": "know more",
+    "label_open_map": "open map",
+    "label_listen": "listen",
+    "label_all": "all",
+    "category_labels": {
+        "cultura": "culture",
+        "geografia": "geography",
+        "língua": "language",
+        "natureza": "nature",
+        "pessoas": "people",
+        "monumentos": "monuments",
+        "comida": "food",
+        "clubes": "clubs",
+        "pinturas": "paintings",
+        "distritos": "districts",
+        "cidades": "cities",
+        "rios": "rivers",
+        "animais": "animals",
+        "plantas": "plants",
+        "antes de 1143": "before 1143",
+        "1910-presente": "1910–present",
+        "português → inglês": "portuguese → english",
+        "inglês → português": "english → portuguese",
+    },
+}
+
 # The home page opens on the menu, and its empty card shows Portugal's outline
-# in its flag above "escolhe uma categoria". The engine has no setting for
+# in its flag above "escolhe uma categoria" ("pick a category" at /en/). The
+# engine has no setting for
 # that, so this rides on analytics_html (raw HTML at the bottom of every page,
 # after app.js); loading a category replaces the card's text, so the map goes
 # with it. static/flag-map-portugal.svg: Wikimedia Commons, "Flag map of
@@ -19,7 +120,8 @@ HOME_CARD_HTML = """
 <script>
 (function () {
     var status = document.getElementById('status');
-    if (status && status.textContent.trim() === 'escolhe uma categoria') {
+    var label = status && status.textContent.trim();
+    if (label === 'escolhe uma categoria' || label === 'pick a category') {
         status.classList.add('home');
         status.insertAdjacentHTML('afterbegin', '<img class="home-map" src="/static/flag-map-portugal.svg" alt="Portugal">');
     }
@@ -126,6 +228,7 @@ config = MemiConfig(
     label_open_map="abrir mapa",
     label_listen="ouvir",
     label_all="todos",
+    languages={"en": ENGLISH},
     done_html="""
         <svg width="200" height="180" viewBox="0 0 80 72" xmlns="http://www.w3.org/2000/svg">
             <defs>

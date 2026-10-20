@@ -7,43 +7,65 @@ from urllib.parse import quote
 from memi_engine import CategoryProvider, ScientificNameProvider, register
 from memi_engine import images
 
-from memi_pt.categories.cities import CITIES, WIKIPEDIA as CITY_WIKI, REGIONS as CITY_REGIONS
+from memi_pt.categories.cities import (
+    CITIES,
+    EN as CITY_EN,
+    REGIONS as CITY_REGIONS,
+    WIKIPEDIA as CITY_WIKI,
+)
 from memi_pt.categories.clubs import (
+    EN as CLUB_EN,
     CLUBS,
     LOGOS as CLUB_LOGOS,
     TAGS as CLUB_TAGS,
     WIKIPEDIA as CLUB_WIKI,
 )
-from memi_pt.categories.paintings import PAINTINGS, COMMONS_FILES as PAINTING_FILES, TAGS as PAINTING_TAGS
-from memi_pt.categories.rivers import RIVERS, WIKIPEDIA as RIVER_WIKI, TAGS as RIVER_TAGS
+from memi_pt.categories.paintings import (
+    COMMONS_FILES as PAINTING_FILES,
+    EN as PAINTING_EN,
+    PAINTINGS,
+    TAGS as PAINTING_TAGS,
+)
+from memi_pt.categories.rivers import (
+    EN as RIVER_EN,
+    RIVERS,
+    TAGS as RIVER_TAGS,
+    WIKIPEDIA as RIVER_WIKI,
+)
 from memi_pt.categories.districts import (
+    EN as DISTRICT_EN,
     DISTRICTS,
     MAP_FILES as DISTRICT_MAPS,
     WIKIPEDIA as DISTRICT_WIKI,
 )
 from memi_pt.categories.monuments import (
+    EN as MONUMENT_EN,
     MONUMENTS,
     LOCATIONS,
     WIKIPEDIA as MONUMENT_WIKI,
 )
-from memi_pt.categories.food import FOOD
+from memi_pt.categories.food import EN as FOOD_EN, FOOD
 from memi_pt.categories.language import ENGLISH, PHRASE_NOTES, PHRASES, phrase_slug
 from memi_pt.categories.monarchy import (
     ALL as MONARCHY_ALL,
+    EN as MONARCHY_EN,
     WIKIPEDIA as MONARCHY_WIKI,
     TAGS as MONARCHY_TAGS,
 )
 from memi_pt.categories.pre_kingdom import (
+    EN as PRE_KINGDOM_EN,
     FIGURES as PRE_KINGDOM_ALL,
     WIKIPEDIA as PRE_KINGDOM_WIKI,
     TAGS as PRE_KINGDOM_TAGS,
 )
 from memi_pt.categories.republic import (
     ALL as REPUBLIC_ALL,
+    EN as REPUBLIC_EN,
     WIKIPEDIA as REPUBLIC_WIKI,
     TAGS as REPUBLIC_TAGS,
 )
 from memi_pt.categories.nature import (
+    EN as NATURE_EN,
     ALL_ANIMALS,
     ALL_PLANTS,
     ANIMAL_WIKIPEDIA,
@@ -58,6 +80,7 @@ PORTUGAL_BOUNDS = ((32.0, 42.2), (-31.6, -6.1))
 
 class DistrictsProvider(CategoryProvider):
     key = "geografia:distritos"
+    translations = {"en": DISTRICT_EN}
     items = DISTRICTS
     override_name = True
     map_zoom = 8
@@ -78,6 +101,7 @@ class DistrictsProvider(CategoryProvider):
 
 class MonumentsProvider(CategoryProvider):
     key = "cultura:monumentos"
+    translations = {"en": MONUMENT_EN}
     items = MONUMENTS
     override_name = True
     map_zoom = 16
@@ -93,7 +117,10 @@ class MonumentsProvider(CategoryProvider):
 
 class FoodProvider(CategoryProvider):
     key = "cultura:comida"
+    translations = {"en": FOOD_EN}
     items = FOOD
+    # The answer is the dish's Portuguese name, not the English article's.
+    override_name = True
 
     def get_image(self, item):
         result = images.get_wikipedia_image(item)
@@ -104,6 +131,7 @@ class FoodProvider(CategoryProvider):
 
 class MonarchyProvider(CategoryProvider):
     key = "pessoas:1143-1910"
+    translations = {"en": MONARCHY_EN}
     items = MONARCHY_ALL
     override_name = True
 
@@ -117,6 +145,7 @@ class MonarchyProvider(CategoryProvider):
 
 class RepublicProvider(CategoryProvider):
     key = "pessoas:1910-presente"
+    translations = {"en": REPUBLIC_EN}
     items = REPUBLIC_ALL
     override_name = True
 
@@ -130,6 +159,7 @@ class RepublicProvider(CategoryProvider):
 
 class AnimalsProvider(ScientificNameProvider):
     key = "natureza:animais"
+    translations = {"en": NATURE_EN}
     items = ALL_ANIMALS
     override_name = True
     scientific_names = SCIENTIFIC_NAMES
@@ -141,6 +171,7 @@ class AnimalsProvider(ScientificNameProvider):
 
 class PlantsProvider(ScientificNameProvider):
     key = "natureza:plantas"
+    translations = {"en": NATURE_EN}
     items = ALL_PLANTS
     override_name = True
     scientific_names = SCIENTIFIC_NAMES
@@ -152,6 +183,7 @@ class PlantsProvider(ScientificNameProvider):
 
 class CitiesProvider(CategoryProvider):
     key = "geografia:cidades"
+    translations = {"en": CITY_EN}
     items = CITIES
     override_name = True
     map_zoom = 12
@@ -167,6 +199,7 @@ class CitiesProvider(CategoryProvider):
 
 class PreKingdomProvider(CategoryProvider):
     key = "pessoas:antes de 1143"
+    translations = {"en": PRE_KINGDOM_EN}
     items = PRE_KINGDOM_ALL
     override_name = True
 
@@ -180,6 +213,7 @@ class PreKingdomProvider(CategoryProvider):
 
 class RiversProvider(CategoryProvider):
     key = "geografia:rios"
+    translations = {"en": RIVER_EN}
     items = RIVERS
     override_name = True
 
@@ -201,6 +235,7 @@ class RiversProvider(CategoryProvider):
 
 class ClubsProvider(CategoryProvider):
     key = "cultura:clubes"
+    translations = {"en": CLUB_EN}
     items = CLUBS
     override_name = True
     light_bg = True
@@ -221,6 +256,7 @@ class ClubsProvider(CategoryProvider):
 
 class PaintingsProvider(CategoryProvider):
     key = "cultura:pinturas"
+    translations = {"en": PAINTING_EN}
     items = PAINTINGS
     override_name = True
 

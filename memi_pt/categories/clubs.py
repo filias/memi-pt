@@ -87,3 +87,9 @@ WIKIPEDIA = {
     "Estrela Amadora": "C.F. Estrela da Amadora",
     "Farense": "S.C. Farense",
 }
+
+# English, for the game played at /en/: the city tags English names
+# differently. Club names stay as they are.
+EN = {
+    "Lisboa": "Lisbon",
+}

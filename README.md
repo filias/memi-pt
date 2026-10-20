@@ -2,7 +2,10 @@
 
 A Portuguese memory card game built on [memi-engine](https://github.com/filias/memi-engine).
 
-Live at [pt.memi.click](https://pt.memi.click)
+Live at [pt.memi.click](https://pt.memi.click), and in English at
+[/en/](https://pt.memi.games/en/) — the whole game, answers included, with a
+`pt | en` switch in the header (memi-engine's `MemiConfig.languages`; each
+category's English names and tags are the `EN` dicts in `memi_pt/categories/`).
 
 ## Categories
 

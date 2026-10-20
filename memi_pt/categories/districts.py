@@ -55,3 +55,9 @@ MAP_FILES = {
     "Açores": "LocalRAA.svg",
     "Madeira": "LocalRAM.svg",
 }
+
+# English, for the game played at /en/: answers that English names differently.
+EN = {
+    "Lisboa": "Lisbon",
+    "Açores": "Azores",
+}

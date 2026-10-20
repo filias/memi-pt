@@ -113,3 +113,34 @@ TAGS = {
 }
 
 WIKIPEDIA = {}
+
+# English, for the game played at /en/: titles as they are known in English,
+# or translated. The tags are painters' names and dates, the same in English.
+EN = {
+    "Painéis de São Vicente": "Saint Vincent Panels",
+    "São Pedro": "Saint Peter",
+    "Pentecostes": "Pentecost",
+    "Calvário": "Calvary",
+    "Natureza-Morta com Doces e Flores": "Still Life with Sweets and Flowers",
+    "A Descida da Cruz": "The Descent from the Cross",
+    "O Grupo do Leão": "The Lion Group",
+    "Retrato de Antero de Quental": "Portrait of Antero de Quental",
+    "Concerto de Amadores": "Amateurs' Concert",
+    "O Fado": "Fado",
+    "Os Bêbados": "The Drunkards",
+    "As Promessas": "The Vows",
+    "Conduzindo o Rebanho": "Driving the Flock",
+    "A Ceifa": "The Harvest",
+    "Casas Brancas de Capri": "White Houses of Capri",
+    "Canção Popular — a Russa e o Fígaro": "Popular Song — the Russian and Figaro",
+    "Procissão Corpus Christi": "Corpus Christi Procession",
+    "Retrato de Fernando Pessoa": "Portrait of Fernando Pessoa",
+    "Gare Marítima de Alcântara": "Alcântara Maritime Station",
+    "A Fuga": "The Escape",
+    "Retrato de João da Silva": "Portrait of João da Silva",
+    "Lisboa": "Lisbon",
+    "A Cidade": "The City",
+    "A Dança": "The Dance",
+    "Atelier-Museu Júlio Pomar": "Júlio Pomar Studio Museum",
+    "Coração Independente": "Independent Heart",
+}

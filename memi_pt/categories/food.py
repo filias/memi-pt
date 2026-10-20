@@ -65,3 +65,32 @@ FOOD = [
     "Ginjinha",
     "Licor Beirão",
 ]
+
+# English, for the game played at /en/. English mostly keeps the Portuguese
+# names of dishes (pastel de nata, francesinha, bacalhau à Brás); these are
+# the ones it says differently.
+EN = {
+    "Sardinha assada": "Grilled sardines",
+    "Arroz de marisco": "Seafood rice",
+    "Queijo da Serra": "Serra da Estrela cheese",
+    "Arroz de pato": "Duck rice",
+    "Bolo de arroz": "Rice cake",
+    "Tripas à moda do Porto": "Porto-style tripe",
+    "Leitão da Bairrada": "Bairrada suckling pig",
+    "Bacalhau com natas": "Salt cod with cream",
+    "Feijoada à transmontana": "Trás-os-Montes bean stew",
+    "Arroz de tamboril": "Monkfish rice",
+    "Cabrito assado": "Roast kid",
+    "Rissóis": "Rissoles",
+    "Croquetes": "Croquettes",
+    "Pataniscas de bacalhau": "Salt cod fritters",
+    "Caracóis": "Snails",
+    "Chouriço": "Chouriço sausage",
+    "Moelas": "Stewed gizzards",
+    "Arroz doce": "Rice pudding",
+    "Queijo de Azeitão": "Azeitão cheese",
+    "Queijo de São Jorge": "São Jorge cheese",
+    "Açorda alentejana": "Alentejo bread soup",
+    "Ensopado de borrego": "Lamb stew",
+    "Vinho do Porto": "Port wine",
+}
